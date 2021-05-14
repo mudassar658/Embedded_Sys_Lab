@@ -55,5 +55,5 @@ Our final circuit might be little different from the below circuit diagram to im
 -	1 USB wire to connect with computer
 
 Group Members
-* _Mohammad Faheemuddin_
+* _Faheemuddin Mohammed_
 * _Mudassar Manzoor_
