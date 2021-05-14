@@ -37,10 +37,10 @@ Since LIN bus uses Master / Slave approach so, we will use the same master / sla
 Our final circuit might be little different from the below circuit diagram to implement the best practices and procedures.
  
 ## Schematics
-![Schematic Diagram](/images/schematic.png)
+![Schematic Diagram](./images/schematic.png)
 
 ## Breadboard
-![Breadboard Diagram](/images/breadboad.png)
+![Breadboard Diagram](./images/breadboad.png)
 
 ## Hardware Required
 -	Two Arduino UNO
