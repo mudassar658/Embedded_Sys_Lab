@@ -40,7 +40,7 @@ Our final circuit might be little different from the given below circuit diagram
 ![Schematic Diagram](/images/schematic.jpg)
 
 ## Breadboard
-![Breadboard Diagram](/images/)
+![Breadboard Diagram](/images/breadboard.png)
 
 ## Hardware Required
 -	Two Arduino UNO
