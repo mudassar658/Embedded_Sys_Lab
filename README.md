@@ -66,6 +66,10 @@ Due to some implementation problems in LIN bus communication via Arduino UNO, af
 
 So we implemented the serial communication between the two computers on USB port via Ariduino Uno.
 
+Below is the hardware photo we designed:
+
+![Serial Communication Image](/images/arduino-serial-communication.jpg)
+
 Following is the Sender and Receiver code we wrote for it.
 
 ## Sender
