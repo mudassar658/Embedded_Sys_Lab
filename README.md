@@ -110,7 +110,7 @@ void loop() {
 }
 ```
 
-Following the Video demonstration of the project:
+Following is the Video demonstration of the project:
 
 ###Video comes here.
 
