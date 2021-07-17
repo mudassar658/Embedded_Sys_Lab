@@ -60,13 +60,55 @@ Our final circuit might be little different from the given below circuit diagram
 
 ![Implementation Diagram](/images/LinBus_Breakout_board.jpg)
 
+# Serial Communication between two computers via Arduino UNO
+
+Due to some implementation problems in LIN bus communication via Arduino UNO, after discussion with the Lab Admin we were allowed to implement serial communication using two Arduinos.
+
+So we implemented the serial communication between the two computers on USB port via Ariduino Uno.
+
+Following is the Sender and Receiver code we wrote for it.
+
+## Sender
+```
+#include <SoftwareSerial.h>
+
+SoftwareSerial SwSerial(10, 11); // RX, TX
+
+void setup() {
+  Serial.begin(9600);
+  SwSerial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available()) {
+    int inByte = Serial.read();
+    SwSerial.write(inByte);
+  }
+}
 ```
 
+## Receiver
+```
+#include <SoftwareSerial.h>
+
+SoftwareSerial SwSerial(10, 11); // RX, TX
+
+void setup() {
+  Serial.begin(9600);
+  SwSerial.begin(9600);
+}
+
+void loop() {
+  if (SwSerial.available()) {
+    int inByte = SwSerial.read();
+    Serial.write(inByte);
+  }
+}
 ```
 
-```
+Following the Video demonstration of the project:
 
-```
+###Video comes here.
 
 Group Members
 * _Faheemuddin Mohammed_
