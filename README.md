@@ -62,11 +62,11 @@ Our final circuit might be little different from the given below circuit diagram
 
 # Serial Communication between two computers via Arduino UNO
 
-Due to some implementation problems in LIN bus communication via Arduino UNO, after discussion with the Lab Admin we were allowed to implement serial communication using two Arduinos.
+Due to some implementation problems in LIN bus communication via Arduino UNO and we could not find the required libraries. So after discussion with Maximilian Hammer we were allowed to implement serial communication using two Arduinos.
 
 So we implemented the serial communication between the two computers on USB port via Ariduino Uno.
 
-Below is the hardware photo we designed:
+Below is the hardware diagram:
 
 ![Serial Communication Image](/images/arduino-serial-communication.jpg)
 
