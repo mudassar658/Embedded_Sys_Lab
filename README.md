@@ -112,7 +112,7 @@ void loop() {
 
 Following is the Video demonstration of the project:
 
-###Video comes here.
+![Video_DEMO](/video_demo/DBLab_Demo.mp4)
 
 Group Members
 * _Faheemuddin Mohammed_
