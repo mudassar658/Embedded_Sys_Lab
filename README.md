@@ -1,4 +1,4 @@
-# Local Interconnect Network (LIN)-based Arduino Network
+# 1- Local Interconnect Network (LIN)-based Arduino Network
 
 ## Scope
 The system scope is to develop a LIN based network using two Arduino hardware components along with few sub components such as sensor and led display which should have the capability to transfer sensor data from one Arduino to another Arduino in the network and display the output to a connected display.
@@ -62,7 +62,7 @@ Our final circuit might be little different from the given below circuit diagram
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-# Serial Communication between two computers via Arduino UNO
+# 2- Serial Communication between two computers via Arduino UNO
 
 Due to some implementation problems in LIN bus communication via Arduino UNO and we could not find the required libraries. So after discussion with Maximilian Hammer we were allowed to implement serial communication using two Arduinos.
 
@@ -117,7 +117,7 @@ Following is the video link to download of Serial Communication between two comp
 ### https://we.tl/t-n1cdlgBsTU
 ----------------------------------------------------------------------------------------------------------------------------
 
-# LCD display of X-axis and Y-axis with Arduino and Magnetometer HMC5883
+# 3- LCD display of X-axis and Y-axis with Arduino and Magnetometer HMC5883
 
 Updated new implementation of our DB lab project by following the instruction of our Lab admin Maximilian Hammer to add more functionality to the communication. We implemented a system to calculate and display X-Axis and Y-Axis on screen using Arduino UNO and Magnetometer HMC5883.
 
