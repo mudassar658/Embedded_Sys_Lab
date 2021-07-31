@@ -60,6 +60,8 @@ Our final circuit might be little different from the given below circuit diagram
 
 ![Implementation Diagram](/images/LinBus_Breakout_board.jpg)
 
+----------------------------------------------------------------------------------------------------------------------------
+
 # Serial Communication between two computers via Arduino UNO
 
 Due to some implementation problems in LIN bus communication via Arduino UNO and we could not find the required libraries. So after discussion with Maximilian Hammer we were allowed to implement serial communication using two Arduinos.
@@ -110,9 +112,119 @@ void loop() {
 }
 ```
 
-Following is the Video demonstration of the project:
+Following is the video link to download of Serial Communication between two computers the project:
 
-![Video_DEMO](/video_demo/Lab_Demo.mp4)
+### https://we.tl/t-n1cdlgBsTU
+----------------------------------------------------------------------------------------------------------------------------
+
+# LCD display of X-axis and Y-axis with Arduino and Magnetometer HMC5883
+
+Updated new implementation of our DB lab project by following the instruction of our Lab admin Maximilian Hammer to add more functionality to the communication. We implemented a system to calculate and display X-Axis and Y-Axis on screen using Arduino UNO and Magnetometer HMC5883.
+
+Following are fews images of the implemented project.
+
+![Image_1](/images/IMG_1-min.jpg)
+
+![Image_2](/images/IMG_2-min.jpg)
+
+![Image_3](/images/IMG_3-min.jpg)
+
+And we code as follows to display the axis on screen.
+
+```
+#include <SoftwareSerial.h>
+#include <Wire.h>  
+#include <LiquidCrystal_I2C.h>
+
+SoftwareSerial SwSerial(10, 11); // RX, TX
+LiquidCrystal_I2C lcd(0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
+
+#include <Wire.h>
+
+#define address 0x1E //0011110b, I2C 7bit address of HMC5883
+
+static byte databuf[10] = {0};
+
+static byte buf[17] = {0};
+static bool bEn = false;
+
+void clearBuf()
+{
+  for(int i=0; i<17; i++)
+    buf[i] = 0;
+}
+
+void setup(){  
+  //Initialize Serial and I2C communications
+  Serial.begin(115200);
+  Wire.begin();  
+  //Put the HMC5883 IC into the correct operating mode
+  Wire.beginTransmission(address); //open communication with HMC5883
+  Wire.write(0x02); //select mode register
+  Wire.write(0x00); //continuous measurement mode
+  Wire.endTransmission();
+  
+  lcd.begin(16,2);
+  lcd.backlight();
+  lcd.setCursor(0,0);
+  lcd.print("Gyroscope Data");
+
+  databuf[0] = 0xff;
+  databuf[1] = 0x11;
+  databuf[2] = 0xdd;
+}
+
+void loop(){
+  
+  int x,y,z; //triple axis data
+  int x1, x2, y1, y2;
+  int xmin,xmax,ymin,ymax,zmin,zmax;
+  xmin=0; xmax=0; ymax=0; ymin = 0; zmin=0;zmax=0;
+  //Tell the HMC5883 where to begin reading data
+  Wire.beginTransmission(address);
+  Wire.write(0x03); //select register 3, X MSB register
+  Wire.endTransmission();
+
+ //Read data from each axis, 2 registers per axis
+  Wire.requestFrom(address, 6);
+  if(6<=Wire.available()){
+    x1 = Wire.read()<<8; //X msb
+    x2 = Wire.read(); //X lsb
+    x = x1 | x2;
+    z = Wire.read()<<8; //Z msb
+    z |= Wire.read(); //Z lsb
+    y1 = Wire.read()<<8; //Y msb
+    y2 = Wire.read(); //Y lsb
+    y = y1 | y2;
+  }
+
+    databuf[3] = x1;
+    databuf[4] = x2;
+    databuf[5] = y1;
+    databuf[6] = y2;
+    databuf[7] = 0x00;
+  
+
+  lcd.setCursor(0,1);
+  lcd.print("X: ");
+  lcd.setCursor(3,1);
+  lcd.print(x);
+  lcd.setCursor(8,1);
+  lcd.print("Y: ");
+  lcd.setCursor(11,1);  
+  lcd.print(y);
+
+  Serial.println();
+  
+//  Serial.print("  z: ");
+//  Serial.println(z);  
+  delay(500);
+}
+```
+
+Below is the link to download our video demonstration of above implementation of calculation of X-axis and Y-axis with Arduino and Magnetometer HMC5883:
+
+### https://we.tl/t-ZYp98Jjnn0
 
 Group Members
 * _Faheemuddin Mohammed_
